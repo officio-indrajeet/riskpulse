@@ -13,6 +13,13 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ingestion-service</name>
 	<description>RiskPulse Ingestion Service -- validates and accepts incoming transactions for real-time fraud/risk scoring.</description>
+	<url>https://github.com/officio-indrajeet/riskpulse</url>
+	<scm>
+		<connection>scm:git:https://github.com/officio-indrajeet/riskpulse.git</connection>
+		<developerConnection>scm:git:https://github.com/officio-indrajeet/riskpulse.git</developerConnection>
+		<url>https://github.com/officio-indrajeet/riskpulse</url>
+		<tag>main</tag>
+	</scm>
 	<licenses>
 		<license>
 			<name>MIT License</name>
