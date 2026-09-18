@@ -2,6 +2,7 @@ package com.example.ingestion_service.web;
 
 import com.example.ingestion_service.model.TransactionRequest;
 import com.example.ingestion_service.service.IdempotencyService;
+import com.example.ingestion_service.service.TransactionProducer;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,9 +18,11 @@ import java.util.Map;
 public class IngestionController {
 
     private final IdempotencyService idempotencyService;
+    private final TransactionProducer transactionProducer;
 
-    public IngestionController(IdempotencyService idempotencyService) {
+    public IngestionController(IdempotencyService idempotencyService, TransactionProducer transactionProducer) {
         this.idempotencyService = idempotencyService;
+        this.transactionProducer = transactionProducer;
     }
 
     @PostMapping
@@ -33,7 +36,7 @@ public class IngestionController {
                             "transactionId", transactionRequest.transactionId()
                     ));
         }
-
+        transactionProducer.send(transactionRequest);
         return ResponseEntity.accepted().body(transactionRequest);
     }
 }
