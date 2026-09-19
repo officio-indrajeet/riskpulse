@@ -5,6 +5,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+/**
+ * Publishes accepted transactions onto the {@code transactions.raw} Kafka topic.
+ * <p>
+ * Uses the transaction's {@code accountId} as the record key, so all of one
+ * account's transactions land on the same partition and stay in order for
+ * downstream consumers (e.g. the Risk Scoring Service's Kafka Streams topology).
+ */
 @Service
 public class TransactionProducer {
 

@@ -5,6 +5,13 @@ import org.springframework.stereotype.Service;
 
 import java.time.Duration;
 
+/**
+ * Prevents the same transaction from being processed twice.
+ * <p>
+ * Backed by Redis: each transactionId is recorded with a 24-hour TTL the first
+ * time it's seen, using an atomic SET NX EX so concurrent requests for the same
+ * transactionId can never both be treated as "first seen".
+ */
 @Service
 public class IdempotencyService {
 

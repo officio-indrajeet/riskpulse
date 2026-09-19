@@ -7,6 +7,13 @@ import java.util.Currency;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * Validates that a string is a real ISO 4217 currency code, per {@link ValidCurrency}.
+ * <p>
+ * Checks against every currency code the JVM itself knows about
+ * ({@link Currency#getAvailableCurrencies()}), so no hand-maintained list of
+ * currency codes needs to be kept in sync.
+ */
 public class CurrencyValidator implements ConstraintValidator<ValidCurrency, String> {
 
     // Built once: every real currency code the JVM knows about (USD, EUR, GBP, INR, ...)

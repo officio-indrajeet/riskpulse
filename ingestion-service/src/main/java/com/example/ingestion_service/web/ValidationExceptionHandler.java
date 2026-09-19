@@ -9,6 +9,14 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Global exception handler that turns Bean Validation failures into a readable
+ * HTTP 400 response.
+ * <p>
+ * Catches {@link MethodArgumentNotValidException} (thrown when an {@code @Valid}
+ * request body fails validation) and maps each failing field to its validation
+ * message, instead of letting Spring's default error response leak stack traces.
+ */
 @RestControllerAdvice
 public class ValidationExceptionHandler {
 

@@ -6,6 +6,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 
+/**
+ * Configures the OpenAPI/Swagger documentation exposed for this service.
+ * <p>
+ * Registers the {@link OpenAPI} bean consumed by springdoc-openapi to generate the
+ * interactive API docs (title, description, version) for the Ingestion Service's
+ * REST endpoints.
+ */
 @Configuration
 public class OpenApiConfig {
 

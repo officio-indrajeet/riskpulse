@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: risk-scoring-service
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    topic:
+      transactions-raw: transactions.raw
+    streams:
+      application-id: risk-scoring-service
+      properties:
+        default.key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+
+server:
+  port: 8082

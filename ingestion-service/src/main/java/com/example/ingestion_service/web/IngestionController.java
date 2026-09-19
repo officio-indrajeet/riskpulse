@@ -13,6 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
+/**
+ * REST controller that accepts incoming transactions for fraud/risk scoring.
+ * <p>
+ * Exposes {@code POST /api/v1/transactions}: validates the request body, rejects
+ * duplicates (HTTP 409) using {@link IdempotencyService}, and otherwise publishes
+ * the transaction onto Kafka via {@link TransactionProducer} before returning
+ * HTTP 202 Accepted.
+ */
 @RestController
 @RequestMapping("/api/v1/transactions")
 public class IngestionController {
